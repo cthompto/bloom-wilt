@@ -19,23 +19,133 @@ function setup()
     img = loadImage('assets/flowers-600-900.jpg')
     image(img, 0, 0, width, height)
 
-    -- generate pixel field
+    step = "intro"
+    frameTarget = 0
+    frameInt = 1800
+    forward = true
+
     pixelSize = 10
     limit = ((width / pixelSize) * (height / pixelSize))
     x = pixelSize / 2
     y = pixelSize / 2
-    pixelGeneration()
 
+    -- generate pixel field
+    pixelGeneration()
 
     spotInit()
 end
 
 function draw()
     background(0, 0, 0, 5)
-    --image(img, 0, 0, width, height)
+    if step == "intro" then
+      staticPixel()
+    elseif step == "main" then
+      pixelProcess()
+      spotMove()
+      slideEvent()
+    end
+end
 
-    pixelProcess()
-    spotMove()
+function keyPressed() 
+  if key == 'return' then
+    step = "main"
+    frameTarget = frameCount+frameInt
+  elseif key == 'a' then
+    pixelQuake()
+  elseif key == 's' then
+    pixelXslide1()
+  elseif key == 'd' then
+    pixelYslide1()
+  end
+
+end
+
+function slideEvent()
+  if frameCount >= frameTarget and frameCount < frameTarget+100 then
+    if frameCount%5 == 0 then
+      if forward then
+        pixelXslide1()
+      else
+        pixelXslide2()
+      end
+    end
+  elseif frameCount >= frameTarget+5 and frameCount < frameTarget+200 then
+    if frameCount%5 == 0 then
+      if forward then
+        pixelYslide1()
+      else
+        pixelYslide2()
+      end
+    end
+  elseif frameCount > frameTarget+200 then
+    frameTarget = frameCount+frameInt+200
+    if forward then
+      forward = false
+    elseif not forward then
+      forward = true
+    end
+  end
+end
+
+function pixelXslide1()
+  for i = 1, #myPixels do
+    if myPixels[i].iy == 5 or (myPixels[i].iy+5)%20 == 0 then
+      myPixels[i].x = myPixels[i].x + 0.25
+    else 
+      myPixels[i].x = myPixels[i].x - 0.25
+    end
+  end
+end
+
+function pixelYslide1()
+  for i = 1, #myPixels do
+    if myPixels[i].ix == 5 or (myPixels[i].ix+5)%20 == 0 then
+      myPixels[i].y = myPixels[i].y + 0.25
+    else 
+      myPixels[i].y = myPixels[i].y - 0.25
+    end
+  end
+end
+
+function pixelXslide2()
+  for i = 1, #myPixels do
+    if myPixels[i].iy == 5 or (myPixels[i].iy+5)%20 == 0 then
+      myPixels[i].x = myPixels[i].x - 0.25
+    else 
+      myPixels[i].x = myPixels[i].x + 0.25
+    end
+  end
+end
+
+function pixelYslide2()
+  for i = 1, #myPixels do
+    if myPixels[i].ix == 5 or (myPixels[i].ix+5)%20 == 0 then
+      myPixels[i].y = myPixels[i].y - 0.25
+    else 
+      myPixels[i].y = myPixels[i].y + 0.25
+    end
+  end
+end
+
+function pixelQuake() 
+  for i = 1, #myPixels do
+    shiftX = random(-5,5)
+    shiftY = random(-5,5)
+    myPixels[i].x = myPixels[i].x + shiftX
+    myPixels[i].y = myPixels[i].y + shiftY
+    myPixels[i].r = myPixels[i].r + random(-5,5)
+  end
+end
+
+function staticPixel()
+  for i = 1, #myPixels do
+    push()
+    translate(myPixels[i].x, myPixels[i].y)
+    rotate(myPixels[i].r)
+    fill(myPixels[i].color)
+    rect(0, 0, myPixels[i].s, myPixels[i].s)
+    pop()
+  end
 end
 
 function pixelGeneration()
@@ -46,6 +156,8 @@ function pixelGeneration()
             color = g,
             x = x,
             y = y,
+            ix = x,
+            iy = y,
             r = 0,
             s = pixelSize
         }
