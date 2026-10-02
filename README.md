@@ -26,9 +26,8 @@ This piece was written in [L5](https://l5lua.org/), with no generative "AI" tool
 
 ## To-Dos
 ~~- add prior versions~~
-- add title screen
-- add start button
-- add credits
-- add random picture chooser
-- add include more images
-- set end
+~~-add title screen~~
+~~- add start button~~
+~~- add credits~~
+~~- add random picture chooser~~
+~~- add include more images~~

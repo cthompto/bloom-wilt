@@ -15,9 +15,15 @@ function setup()
     -- Describe the visual output
     describe('Modifies a pixelated nature scene over time.')
 
+    imgTitle = {"flowers","maple-leaf","pink-rose","red-leaf","snake"}
     --img = loadImage('assets/red-leaf-600-900.jpg')
-    img = loadImage('assets/flowers-600-900.jpg')
+    img = loadImage('assets/'..random(imgTitle)..'-600-900.jpg')
     image(img, 0, 0, width, height)
+
+    font = loadFont('assets/PixelifySans-Regular.ttf')
+    textFont(font)
+    textAlign(CENTER)
+    textSize(100)
 
     step = "intro"
     frameTarget = 0
@@ -38,7 +44,9 @@ end
 function draw()
     background(0, 0, 0, 5)
     if step == "intro" then
+      image(img, 0, 0, width, height)
       staticPixel()
+      overlayGraphic()
     elseif step == "main" then
       pixelProcess()
       spotMove()
@@ -48,7 +56,11 @@ end
 
 function keyPressed() 
   if key == 'return' then
-    step = "main"
+    if step == "intro" then
+      step = "main"
+    elseif step =="main" then
+      step = "intro"
+    end
     frameTarget = frameCount+frameInt
   elseif key == 'a' then
     pixelQuake()
@@ -56,8 +68,29 @@ function keyPressed()
     pixelXslide1()
   elseif key == 'd' then
     pixelYslide1()
+  elseif key == 'space' then
+    save('bloom-wilt.png')
   end
 
+end
+
+function overlayGraphic()
+  fill(255,255,255,200)
+  rect(width/2, height/2, 400, 700,10)
+  fill(0)
+  textAlign(CENTER)
+  textSize(100)
+  text("Bloom", 300,200)
+  text("/", 300,300)
+  text("Wilt", 300,400)
+  textSize(40)
+  text("By:", 300, 500)
+  text("Chelsea Thompto", 300, 550)
+  textSize(20)
+  textAlign(LEFT)
+  text("Instructions:\nPress enter to start, the work will run continuously. Restart the program to pick a new image.", 120, 600, 360)
+  textSize(15)
+  text("Credits:\nMade with L5 (Processing for Lua).\nTitle screen font is Pixelify Sans", 120, 725, 360)
 end
 
 function slideEvent()
@@ -142,7 +175,7 @@ function staticPixel()
     push()
     translate(myPixels[i].x, myPixels[i].y)
     rotate(myPixels[i].r)
-    fill(myPixels[i].color)
+    fill(myPixels[i].color[1],myPixels[i].color[2],myPixels[i].color[3],100)
     rect(0, 0, myPixels[i].s, myPixels[i].s)
     pop()
   end
