@@ -10,7 +10,7 @@ This version of the idea uses the same principle of creating an object for each 
 ## Concept
 This project takes inspiration from the "glitch garden" prompt of the L5 jam call. This year is the first time in my life that I have been able to grow a garden and I have had the joy of watching plants bloom and now wilt as time goes on. This inspired me to create a piece that uses blooming and wilting as an abstract idea for manipulating an image. Additionally, the piece uses nature/garden photos I have taken as the base images of the work. 
 
-The intent of this work was to create a piece that could change, undulate, and warp overtime without human input. 
+The intent of this work was to create a piece that could change, undulate, and warp overtime without human input. The piece will change indefinitely, with forms like valleys and peaks emerging over time.
 
 ## Techincal Details
 This piece was written in [L5](https://l5lua.org/), with no generative "AI" tool uses at any stage of it's development. The piece works by:

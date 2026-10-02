@@ -62,16 +62,9 @@ function keyPressed()
       step = "intro"
     end
     frameTarget = frameCount+frameInt
-  elseif key == 'a' then
-    pixelQuake()
-  elseif key == 's' then
-    pixelXslide1()
-  elseif key == 'd' then
-    pixelYslide1()
   elseif key == 'space' then
     save('bloom-wilt.png')
   end
-
 end
 
 function overlayGraphic()
@@ -227,8 +220,10 @@ end
 function spotInit()
     spotX = 200
     spotY = 200
-    moveX = random(-2, 2)
-    moveY = random(-2, 2)
+    intXD = random({1,-1})
+    moveX = random(1,2)*intXD
+    intYD = random({1,-1})
+    moveY = random(1,2)*intYD
 
     spot2X = 200
     spot2Y = 400
