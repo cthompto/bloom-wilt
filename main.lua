@@ -225,10 +225,13 @@ function spotInit()
     intYD = random({1,-1})
     moveY = random(1,2)*intYD
 
+    
     spot2X = 200
     spot2Y = 400
-    move2X = random(-2, 2)
-    move2Y = random(-2, 2)
+    int2XD = random({1,-1})
+    move2X = random(1, 2)*int2XD
+    int2YD = random({1,-1})
+    move2Y = random(1, 2)*int2YD
 end
 
 function spotMove()
