@@ -13,7 +13,7 @@ This project takes inspiration from the "glitch garden" prompt of the L5 jam cal
 The intent of this work was to create a piece that could change, undulate, and warp overtime without human input. The piece will change indefinitely, with forms like valleys and peaks emerging over time.
 
 ## Techincal Details
-This piece was written in [L5](https://l5lua.org/), with no generative "AI" tool uses at any stage of it's development. The piece works by:
+This piece was written in [L5](https://l5lua.org/), with no generative "AI" tools used at any stage of it's development. The piece works by:
 1. Loading an image and reading the color value for the area of each pixel.
 2. Storing each pixel's the color value and position in a table.
 3. Rendering the color value and position as a larger rectangle. 
