@@ -5,7 +5,7 @@ Submission for the L5lua Community Jam
 An exploration in L5 based loosely off of a previous project in p5.js that reads an image and recreates a pixelated version of the image where every pixel is an object that can be moved. The previous project can be viewed here:
 <https://editor.p5js.org/cthompto/sketches/tGZDawaAG>
 
-This version of the idea uses the same principle of creating an object for each pixel but instead of having user controlled changes, "Bloom / Wilt" uses autonomous means of changing pixels. 
+This version of the idea uses the same principle of creating an object for each pixel but instead of having user controlled changes, "Bloom / Wilt" uses autonomous means of changing pixels. The test sketches leading up to the final piece can be viewed in the "tests" folder. There are some ideas in there (like the pixelation spotlight) that I might come back to.
 
 ## Concept
 This project takes inspiration from the "glitch garden" prompt of the L5 jam call. This year is the first time in my life that I have been able to grow a garden and I have had the joy of watching plants bloom and now wilt as time goes on. This inspired me to create a piece that uses blooming and wilting as an abstract idea for manipulating an image. Additionally, the piece uses nature/garden photos I have taken as the base images of the work. 
